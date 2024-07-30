@@ -4,145 +4,132 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flex Layout</title>
-  <!-- HINT:
-  https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors
-  https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Combinators 
-  -->
+  <title>Flexbox Sizing Exercise</title>
   <style>
     body {
-      font-size: 2rem;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
     }
 
     .container {
-      color: white;
-      border: 5px solid gold;
       display: flex;
-      flex-wrap: wrap;
-      height: 80vh;
+      gap: 10px;
+      width: 80%;
+      background-color: #ddd;
+      padding: 20px;
 
     }
 
     .container>* {
-      width: 200px;
+      background-color: #4285f4;
+      color: white;
+      font-size: 18px;
+      padding: 20px;
+      border: 2px solid white;
     }
 
-    .red {
-      background-color: #eb4d4b;
+    textarea {
+      width: 80%;
+      min-height: 150px;
+      margin-top: 20px;
+      resize: vertical;
+      font-family: monospace;
     }
 
-    .orange {
-      background-color: #f0932b;
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #4285f4;
+      color: white;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
     }
 
-    .yellow {
-      background-color: #f6e58d;
+    .parent {
+      display: flex;
+      gap: 10px;
+      width: 80%;
+      background-color: #ddd;
+      padding: 20px;
+      margin: 2rem;
+      justify-content: space-between;
     }
 
-    .green {
-      background-color: #6ab04c;
+    .parent>* {
+      background-color: seagreen;
+      color: white;
+      font-size: 18px;
+      padding: 20px;
+      border: 2px solid white;
+
     }
 
-    .blue {
-      background-color: #4834d4;
+    .one {
+      flex: 0 1 200px;
     }
 
-    .indigo {
-      background-color: #30336b;
+    .two {
+      flex: 0 0 200px;
     }
 
-    .purple {
-      background-color: #be2edd;
+    .three {
+      flex: 0 0 400px;
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <div class="red">Red</div>
-    <div class="orange">Orange</div>
-    <div class="yellow">Yellow</div>
-    <div class="green">Green</div>
-    <div class="blue">Blue</div>
-    <div class="indigo">Indigo</div>
-    <div class="purple">Purple</div>
+  <h1>App Brewery Flexbox Sizing Exercise</h1>
+  <div class="parent">
+    <div class="one">Item 1: 200px</div>
+    <div class="two">Item 2: 200px</div>
+    <div class="three">Item 3: 400px</div>
   </div>
+  <div class="container" id="container">
+    <div class="item1">Item 1: 200px</div>
+    <div class="item2">Item 2: 200px</div>
+    <div class="item3">Item 3: 400px</div>
+  </div>
+  <textarea id="user-css" placeholder="Write your CSS code here..." rows="25">
+/* Write your CSS code below to make the blue items size, grow and shrink like the green ones.*/
 
-  <div style="display: flex; gap: 2em; justify-content: space-between;">
-    <div>
-      <label for="justify-content">Justify Content:</label>
-      <select id="justify-content">
-        <option value="flex-start">Flex Start</option>
-        <option value="flex-end">Flex End</option>
-        <option value="center">Center</option>
-        <option value="space-between">Space Between</option>
-        <option value="space-around">Space Around</option>
-        <option value="space-evenly">Space Evenly</option>
-      </select>
-    </div>
-    <div>
-      <label for="flex-wrap">Flex Wrap:</label>
-      <select id="flex-wrap">
-        <option value="nowrap">No Wrap</option>
-        <option value="wrap">Wrap</option>
-        <option value="wrap-reverse">Wrap Reverse</option>
-      </select>
-    </div>
-    <div>
-      <label for="align-items">Align Items:</label>
-      <select id="align-items">
-        <option value="flex-start">Flex Start</option>
-        <option value="flex-end">Flex End</option>
-        <option value="center">Center</option>
-        <option value="baseline">Baseline</option>
-        <option value="stretch">Stretch</option>
-      </select>
-    </div>
-    <div>
-      <label for="align-content">Align Content:</label>
-      <select id="align-content">
-        <option value="flex-start">Flex Start</option>
-        <option value="flex-end">Flex End</option>
-        <option value="center">Center</option>
-        <option value="space-between">Space Between</option>
-        <option value="space-around">Space Around</option>
-        <option value="space-evenly">Space Evenly</option>
-        <option value="stretch">Stretch</option>
-      </select>
-    </div>
-  </div>
+.container {
+  
+}
+  
+.container > * {
+
+}
+
+.item1 {
+
+}
+
+.item2 {
+
+}
+
+.item3 {
+
+}
+</textarea>
+  <button onclick="applyUserCss()">Apply CSS</button>
+
+  <script>
+    function applyUserCss() {
+      const userCss = document.getElementById('user-css').value;
+      const style = document.createElement('style');
+      style.innerHTML = userCss;
+      document.head.appendChild(style);
+    }
+  </script>
 </body>
-<script>
-  // Get the flex container
-  const flexContainer = document.querySelector('.container');
-  // Get the dropdowns
-  const justifyContentDropdown = document.getElementById('justify-content');
-  const flexWrapDropdown = document.getElementById('flex-wrap');
-  const alignItemsDropdown = document.getElementById('align-items');
-  const alignContentDropdown = document.getElementById('align-content');
-
-  // Set the initial values
-  flexContainer.style.justifyContent = justifyContentDropdown.value;
-  flexContainer.style.flexWrap = flexWrapDropdown.value;
-  flexContainer.style.alignItems = alignItemsDropdown.value;
-  flexContainer.style.alignContent = alignContentDropdown.value;
-
-  // Add event listeners to the dropdowns
-  justifyContentDropdown.addEventListener('change', (event) => {
-    flexContainer.style.justifyContent = event.target.value;
-  });
-
-  flexWrapDropdown.addEventListener('change', (event) => {
-    flexContainer.style.flexWrap = event.target.value;
-  });
-
-  alignItemsDropdown.addEventListener('change', (event) => {
-    flexContainer.style.alignItems = event.target.value;
-  });
-
-  alignContentDropdown.addEventListener('change', (event) => {
-    flexContainer.style.alignContent = event.target.value;
-  });
-</script>
 
 </html>
